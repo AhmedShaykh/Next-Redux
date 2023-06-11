@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import CounterSlice from './slice/CounterSlice';
 
 export const store = configureStore({
-    reducer: {}
+    reducer: {
+        CounterSlice
+    }
 });
 
 export type RootState = ReturnType<typeof store.getState>;
