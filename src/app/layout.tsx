@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google';
+import Providers from '@/Components/Providers';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -18,7 +19,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-black text-zinc-300`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )
