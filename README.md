@@ -1,1 +1,1 @@
-# Redux Toolkit In Next.JS!
+# Next.JS Redux!
