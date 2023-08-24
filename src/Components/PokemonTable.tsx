@@ -20,7 +20,7 @@ const PokemonTable = ({ pokemons }: { pokemons: Pokemon[] }) => {
                 ))}
             </tbody>
         </table>
-    );
+    )
 };
 
 export default PokemonTable;
