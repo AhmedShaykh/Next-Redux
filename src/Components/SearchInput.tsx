@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import PokemonTable from "./PokemonTable";
+import { pokemonApi } from "@/Redux/features/pokemonApi";
 import { RootState, AppDispatch } from "@/Redux/Store";
 import { setSearch } from "@/Redux/features/searchSlice";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
+import { Pokemon } from "Types";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 
@@ -17,6 +19,17 @@ const SearchInput = () => {
 
     const startupPokemon = useAppSelector((state) => state.search.startupPokemon);
 
+    const data = useAppSelector(
+        (state) =>
+            state.pokemonApi.queries[`search("${search}")`]?.data as Pokemon[]
+    );
+
+    useEffect(() => {
+
+        dispatch(pokemonApi.endpoints.search.initiate(search));
+
+    }, [dispatch, search]);
+
     return (
         <div>
             <input
@@ -26,7 +39,7 @@ const SearchInput = () => {
                 onChange={(e) => dispatch(setSearch(e.target.value))}
             />
 
-            <PokemonTable pokemons={startupPokemon} />
+            <PokemonTable pokemons={search.length ? data ?? [] : startupPokemon} />
         </div>
     )
 };
