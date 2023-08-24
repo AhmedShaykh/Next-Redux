@@ -1,10 +1,15 @@
 import React from "react";
-import Login from "@/Components/Login";
+import PokemonTable from "@/Components/PokemonTable";
 
-const Home = () => {
+const Home = async () => {
+
+    const req = await fetch("http://localhost:3000/api/search");
+
+    const data = await req.json();
+
     return (
-        <div className="flex flex-col h-screen justify-center items-center">
-            <Login />
+        <div className="flex justify-center my-8">
+            <PokemonTable pokemons={data} />
         </div>
     )
 };
