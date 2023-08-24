@@ -1,6 +1,7 @@
-import React from "react";
 import { setStartupPokemon } from "@/Redux/features/searchSlice";
+import SearchInput from "@/Components/SearchInput";
 import { store } from "@/Redux/Store";
+import Preloader from "@/Components/Preloader";
 
 const Home = async () => {
 
@@ -11,7 +12,9 @@ const Home = async () => {
     store.dispatch(setStartupPokemon(data));
 
     return (
-        <div className="flex justify-center my-8">
+        <div className="flex flex-col items-center my-8">
+            <Preloader pokemons={data} />
+            <SearchInput />
         </div>
     )
 };
