@@ -12,7 +12,7 @@ const Home = async () => {
     store.dispatch(setStartupPokemon(data));
 
     return (
-        <div className="flex flex-col items-center my-8">
+        <div className="flex flex-col items-center my-6">
             <Preloader pokemons={data} />
             <SearchInput />
         </div>

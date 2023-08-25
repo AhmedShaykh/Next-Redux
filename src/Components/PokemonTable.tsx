@@ -2,7 +2,7 @@ import { Pokemon } from "../../Types";
 
 const PokemonTable = ({ pokemons }: { pokemons: Pokemon[] }) => {
     return (
-        <table>
+        <table className="flex flex-col items-center">
             <thead>
                 <tr>
                     <th className="py-4 text-2xl">Pokemons Name:</th>
